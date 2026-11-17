@@ -1,0 +1,10 @@
+{
+  "number_of_instances": 100,
+  "profiles": [
+    "easy",
+    "hard",
+    "medium"
+  ],
+  "instances_directory": "instances/",
+  "summary_file": "summary.csv"
+}

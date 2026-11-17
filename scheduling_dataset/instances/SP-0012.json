@@ -1,0 +1,158 @@
+{
+  "instance_id": "SP-0012",
+  "profile": "easy",
+  "problem_type": "non_preemptive_resource_constrained_project_scheduling",
+  "time_unit": "abstract_time_unit",
+  "deadline_semantics": "soft",
+  "objective_directions": {
+    "makespan": "minimize",
+    "total_resource_cost": "minimize",
+    "total_tardiness": "minimize",
+    "resource_utilization": "maximize"
+  },
+  "tasks": [
+    {
+      "task_id": "T1",
+      "processing_time": 8,
+      "deadline": 11,
+      "resource_requirements": {
+        "R1": 5
+      },
+      "predecessors": []
+    },
+    {
+      "task_id": "T2",
+      "processing_time": 7,
+      "deadline": 9,
+      "resource_requirements": {
+        "R3": 5
+      },
+      "predecessors": []
+    },
+    {
+      "task_id": "T3",
+      "processing_time": 1,
+      "deadline": 1,
+      "resource_requirements": {
+        "R3": 2,
+        "R4": 4
+      },
+      "predecessors": []
+    },
+    {
+      "task_id": "T4",
+      "processing_time": 5,
+      "deadline": 9,
+      "resource_requirements": {
+        "R3": 4
+      },
+      "predecessors": []
+    },
+    {
+      "task_id": "T5",
+      "processing_time": 8,
+      "deadline": 10,
+      "resource_requirements": {
+        "R4": 4
+      },
+      "predecessors": []
+    },
+    {
+      "task_id": "T6",
+      "processing_time": 7,
+      "deadline": 20,
+      "resource_requirements": {
+        "R5": 5
+      },
+      "predecessors": [
+        "T1"
+      ]
+    },
+    {
+      "task_id": "T7",
+      "processing_time": 2,
+      "deadline": 3,
+      "resource_requirements": {
+        "R5": 1,
+        "R4": 1
+      },
+      "predecessors": []
+    },
+    {
+      "task_id": "T8",
+      "processing_time": 3,
+      "deadline": 15,
+      "resource_requirements": {
+        "R4": 3
+      },
+      "predecessors": [
+        "T2"
+      ]
+    },
+    {
+      "task_id": "T9",
+      "processing_time": 1,
+      "deadline": 6,
+      "resource_requirements": {
+        "R2": 3,
+        "R3": 4
+      },
+      "predecessors": [
+        "T7"
+      ]
+    },
+    {
+      "task_id": "T10",
+      "processing_time": 8,
+      "deadline": 12,
+      "resource_requirements": {
+        "R1": 5,
+        "R3": 4
+      },
+      "predecessors": []
+    }
+  ],
+  "resources": [
+    {
+      "resource_id": "R1",
+      "capacity": 5,
+      "cost_per_unit_time": 4.48
+    },
+    {
+      "resource_id": "R2",
+      "capacity": 5,
+      "cost_per_unit_time": 1.55
+    },
+    {
+      "resource_id": "R3",
+      "capacity": 5,
+      "cost_per_unit_time": 5.8
+    },
+    {
+      "resource_id": "R4",
+      "capacity": 5,
+      "cost_per_unit_time": 8.88
+    },
+    {
+      "resource_id": "R5",
+      "capacity": 5,
+      "cost_per_unit_time": 1.21
+    }
+  ],
+  "characteristics": {
+    "task_count": 10,
+    "resource_count": 5,
+    "deadline_tightness": 0.2102,
+    "resource_scarcity_proxy": 0.2,
+    "cost_variation_cv": 0.6479,
+    "dependency_density": 0.0667,
+    "capacity_factor": 1.7848
+  },
+  "notes": [
+    "Precedence constraints form a directed acyclic graph.",
+    "Deadlines are soft; tardiness is permitted and can be penalized.",
+    "Resource capacities are renewable and shared by concurrent tasks.",
+    "The scarcity proxy is descriptive, not a feasibility certificate.",
+    "The generator does not solve or optimize the scheduling instance."
+  ]
+}
