@@ -77,11 +77,11 @@ Generate 30 instances with 20 tasks and 4 processors:
 
     py src/generators/heft_instance_generator.py --count 30 --tasks 20 --processors 4 --seed 42
 
-Output is written to heft_dataset/.
+Output is written to heft_dataset/.\n\nRun HEFT on one generated instance:\n\n    py -m src.baselines.heft heft_dataset/instances/HEFT-0001.json --output heft_schedule.json
 
 Run HEFT tests:
 
-    py -m unittest tests.test_heft -v
+    py -m unittest discover -s tests -p test_heft.py -v
 
 Run the full test suite:
 
