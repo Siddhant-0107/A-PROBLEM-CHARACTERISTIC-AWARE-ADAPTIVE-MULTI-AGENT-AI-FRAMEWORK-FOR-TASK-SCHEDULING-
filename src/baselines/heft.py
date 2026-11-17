@@ -1,6 +1,9 @@
 """Standard list-based HEFT scheduler for heterogeneous processor DAGs."""
 from __future__ import annotations
+import argparse
+import json
 import math
+from pathlib import Path
 from typing import Any
 
 
@@ -113,3 +116,20 @@ def schedule_heft(instance: dict[str, Any]) -> dict[str, Any]:
     makespan = max(x["finish_time"] for x in assignments)
     return {"assignments": assignments, "task_order": priority,
             "upward_ranks": ranks, "makespan": makespan}
+
+
+def main() -> None:
+    """Run HEFT on a JSON instance and write the resulting schedule."""
+    parser = argparse.ArgumentParser(description="Run the HEFT scheduler.")
+    parser.add_argument("instance", type=Path, help="Path to a HEFT instance JSON file.")
+    parser.add_argument("--output", type=Path, default=Path("heft_schedule.json"))
+    args = parser.parse_args()
+    instance = json.loads(args.instance.read_text(encoding="utf-8"))
+    result = schedule_heft(instance)
+    args.output.write_text(json.dumps(result, indent=2), encoding="utf-8")
+    print(f"HEFT makespan: {result['makespan']:.3f}")
+    print(f"Schedule written to: {args.output.resolve()}")
+
+
+if __name__ == "__main__":
+    main()
