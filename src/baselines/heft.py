@@ -45,8 +45,9 @@ def calculate_upward_ranks(instance: dict[str, Any]) -> dict[str, float]:
     for tid in reversed(order):
         average_compute = sum(float(tasks[tid]["execution_times"][pid])
                               for pid in processors) / len(processors)
+        average_pair_factor = (len(processors) - 1) / len(processors)
         downstream = max(
-            (float(communication[f"{tid}->{child}"]) + ranks[child]
+            (float(communication[`{tid}->{child}`]) * average_pair_factor + ranks[child]
              for child in successors[tid]), default=0.0)
         ranks[tid] = average_compute + downstream
     return ranks
