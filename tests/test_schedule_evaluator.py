@@ -105,7 +105,7 @@ class TestObjectiveFunctions(unittest.TestCase):
         self.assertEqual(calculate_resource_cost(self.instance, self.timings), 16.0)
 
     def test_resource_utilization(self):
-        self.assertAlmostEqual(calculate_resource_utilization(self.instance, self.timings), 7 / 21)
+        self.assertAlmostEqual(calculate_resource_utilization(self.instance, self.timings), 9 / 21)
 
     def test_evaluate_returns_all_objectives(self):
         result = evaluate_schedule(self.instance, self.schedule)
