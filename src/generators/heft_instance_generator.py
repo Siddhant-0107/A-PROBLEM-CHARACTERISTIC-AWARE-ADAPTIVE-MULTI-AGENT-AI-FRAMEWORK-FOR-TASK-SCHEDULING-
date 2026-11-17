@@ -73,7 +73,7 @@ def validate_heft_instance(instance: dict[str, Any]) -> None:
         for predecessor in predecessors:
             if predecessor not in task_set:
                 raise ValueError(f"{task_id}: unknown predecessor {predecessor}.")
-            if predecessor == task_id or predecessor in seen:
+            if predecessor == task_id or predecessor not in seen:
                 raise ValueError(f"{task_id}: dependency order is cyclic or invalid.")
             edges.add(f"{predecessor}->{task_id}")
         times = task.get("execution_times")
