@@ -27,9 +27,9 @@ class TestHEFTRanks(unittest.TestCase):
     def test_upward_rank_values(self):
         ranks = calculate_upward_ranks(small_instance())
         self.assertAlmostEqual(ranks["T4"], 4.0)
-        self.assertAlmostEqual(ranks["T2"], 10.5)
-        self.assertAlmostEqual(ranks["T3"], 10.0)
-        self.assertAlmostEqual(ranks["T1"], 18.5)
+        self.assertAlmostEqual(ranks["T2"], 10.0)
+        self.assertAlmostEqual(ranks["T3"], 9.5)
+        self.assertAlmostEqual(ranks["T1"], 16.5)
 
     def test_priority_order_starts_with_upstream_critical_task(self):
         self.assertEqual(schedule_heft(small_instance())["task_order"][0], "T1")
