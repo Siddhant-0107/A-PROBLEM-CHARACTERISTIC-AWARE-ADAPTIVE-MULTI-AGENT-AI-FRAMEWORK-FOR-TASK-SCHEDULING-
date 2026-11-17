@@ -35,9 +35,11 @@ For task i:
 
 rank_u(i) = average_compute(i) + max(average_communication(i,j) + rank_u(j))
 
-The maximum is zero for exit tasks. Average compute time is calculated over
-all processors. In this benchmark model, communication cost is a fixed edge
-cost, so its average across processor pairs is that edge cost.
+The maximum is zero for exit tasks. Average compute time is calculated over all processors. For upward-rank
+calculation, the fixed edge transfer cost is averaged over all ordered processor
+pairs: same-processor communication is zero and different-processor communication
+uses the edge cost. During actual processor selection, the full edge cost is
+charged only when predecessor and child are mapped to different processors.
 
 ### 2. Task priority
 
